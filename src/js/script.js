@@ -31,8 +31,7 @@ async function fetchData() {
   searchInput.value = "";
 
   if (pokemonIdorName.length === 0) {
-    // Remove instead add a function
-    console.log("please enter valid name or id");
+    error("Please enter valid name or id.");
     return;
   }
 
@@ -40,17 +39,15 @@ async function fetchData() {
     `https://pokeapi.co/api/v2/pokemon/${pokemonIdorName}`
   );
   if (response.status < 200 || response.status >= 300) {
-    console.log("pokemon does not exist");
+    error("Pokemon does not exist.");
     return;
   }
   data = await response.json();
   pokemonSection.innerHTML = "";
-  updateUI();
-  // Remove
-  console.log(data);
+  renderPokemon();
 }
 
-function updateUI() {
+function renderPokemon() {
   let types = data.types.map((item) => item.type.name);
 
   const pokemonCard = document.createElement("div");
@@ -107,3 +104,16 @@ function updateUI() {
 }
 
 searchBtn.addEventListener("click", () => fetchData());
+
+const error = (message) => {
+    pokemonSection.innerHTML = "";
+    const errorDiv = document.createElement("div");
+    errorDiv.classList.add("error-message");
+    errorDiv.textContent = message;
+
+    pokemonSection.appendChild(errorDiv);
+
+    setTimeout(() => {
+        errorDiv.style.display = "none";
+    }, 5000);
+};
