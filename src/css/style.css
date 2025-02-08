@@ -6,18 +6,21 @@
 }
 
 body {
-    width: 100vw;
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)), url('/exsm-3936-lec-wi1-winter-2025-assignment-5-ChetanbirSingh/src/img/background.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)), url('/exsm-3936-lec-wi1-winter-2025-assignment-5-ChetanbirSingh/src/img/background.jpg'); /* Updated path */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.center {
-    height: 100vh;
+/* .center {
     display: flex;
+    justify-content: center;
     align-items: center;
+} */
+ 
+.center {
+    display: flex;
     justify-content: center;
 }
 
