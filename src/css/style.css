@@ -1,115 +1,187 @@
-@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)), url('/exsm-3936-lec-wi1-winter-2025-assignment-5-ChetanbirSingh/src/img/background.jpg'); /* Updated path */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
+    url("/exsm-3936-lec-wi1-winter-2025-assignment-5-ChetanbirSingh/src/img/background.jpg"); /* Updated path */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-/* .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
- 
 .center {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .heading {
-    text-align: center;
-    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
-    font-size: 1.8rem;
-    color: #FFCC00;
-    text-shadow: 3px 3px 0 #000, 6px 6px 5px rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  color: #ffcc00;
+  text-shadow: 3px 3px 0 #000, 6px 6px 5px rgba(0, 0, 0, 0.5);
 }
 
 .search-box {
-    display: flex;
-    flex-direction: column;
-    width: 90%; 
-    max-width: 350px;
-    padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 350px;
+  padding: 0 10px;
 }
 
 .search-box input {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 2px solid #FFCC00;
-    border-radius: 25px;
-    font-size: 14px;
-    padding: 10px 12px;
-    margin: 10px 0;
-    outline: none;
-    color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid #ffcc00;
+  border-radius: 25px;
+  font-size: 14px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  outline: none;
+  color: #ffffff;
 }
 
 .search-box input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-    font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
 }
 
 .search-box button {
-    background-color: #FF3131;
-    color: #FFFFFF;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    font-size: 1rem; 
-    cursor: pointer;
-    transition: 0.3s ease;
+  background-color: #ff3131;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .search-box button:hover {
-    background-color: #D41C1C;
-    transform: translateY(5px);
+  background-color: #d41c1c;
+  transform: translateY(5px);
+}
+#pokemon-data {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.pokemon-card {
+  width: 350px;
+  border: 4px solid #c0c0c0;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
+.card-header {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-bottom: 3px solid #c0c0c0;
+}
+
+.pokemon-name {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+.pokemon-type {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px 20px;
+  border-radius: 10px;
+}
+.pokemon-type span {
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.pokemon-img-container {
+  margin-bottom: 10px;
+}
+
+.pokemon-img {
+  width: 200px;
+  height: 200px;
+}
+
+.pokemon-stats {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.card-footer {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-top: 3px solid #c0c0c0;
+}
+
+.base-experience {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 5px;
 }
 
 @media (min-width: 600px) {
-    .heading {
-        font-size: 2rem; 
-    }
+  .heading {
+    font-size: 2rem;
+  }
 
-    .search-box {
-        width: 80%; 
-        max-width: 400px; 
-    }
+  .search-box {
+    width: 80%;
+    max-width: 400px;
+  }
 
-    .search-box input {
-        font-size: 16px; 
-        padding: 12px 15px; 
-    }
+  .search-box input {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
 
-    .search-box button {
-        font-size: 1.2rem; 
-        padding: 0.6rem 1.2rem; 
-    }
+  .search-box button {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+  }
 }
 
 @media (min-width: 1024px) {
-    .heading {
-        font-size: 2.5rem;
-    }
+  .heading {
+    font-size: 2.5rem;
+  }
 
-    .search-box {
-        width: 60%;
-        max-width: 500px;
-    }
+  .search-box {
+    width: 60%;
+    max-width: 500px;
+  }
 
-    .search-box input {
-        font-size: 18px; 
-        padding: 15px 20px; 
-    }
+  .search-box input {
+    font-size: 18px;
+    padding: 15px 20px;
+  }
 
-    .search-box button {
-        font-size: 1.5rem; 
-        padding: 0.8rem 1.5rem; 
-    }
+  .search-box button {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.5rem;
+  }
 }
