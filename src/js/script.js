@@ -73,15 +73,8 @@ function renderPokemon() {
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add("pokemon-card");
 
-  if (types.length > 1) {
-    pokemonCard.style.background = `linear-gradient(135deg, ${
-      typeColors[types[0]][1]
-    }, ${typeColors[types[1]][2]})`;
-  } else {
-    pokemonCard.style.background = `linear-gradient(135deg, ${
-      typeColors[types[0]][1]
-    }, ${typeColors[types[0]][2]})`;
-  }
+  pokemonCard.style.background = getBackgroundGradient(types);
+
   pokemonContainer.appendChild(pokemonCard);
 
   const cardHeader = document.createElement("div");
@@ -144,15 +137,7 @@ function renderPokemon() {
   const statsCard = document.createElement("div");
   statsCard.classList.add("stats-card");
 
-  if (types.length > 1) {
-    statsCard.style.background = `linear-gradient(135deg, ${
-      typeColors[types[0]][1]
-    }, ${typeColors[types[1]][2]})`;
-  } else {
-    statsCard.style.background = `linear-gradient(135deg, ${
-      typeColors[types[0]][1]
-    }, ${typeColors[types[0]][2]})`;
-  }
+  statsCard.style.background = getBackgroundGradient(types);
 
   const statsContent = document.createElement("div");
   statsContent.classList.add("stats-content");
@@ -170,7 +155,6 @@ function renderPokemon() {
 let evolutionData;
 
 async function fetchEvolutionChain() {
-  evolutionSection.innerHTML = "";
   const speciesResponse = await fetch(data.species.url);
   if (!speciesResponse.ok) {
     return;
@@ -184,7 +168,6 @@ async function fetchEvolutionChain() {
   }
 
   evolutionData = await evolutionResponse.json();
-  evolutionSection.innerHTML = "";
   renderEvolutionTree();
 }
 
@@ -255,3 +238,15 @@ const error = (message) => {
     errorDiv.remove();
   }, 5000);
 };
+
+function getBackgroundGradient(types) {
+  if (types.length > 1) {
+    return `linear-gradient(135deg, ${typeColors[types[0]][1]}, ${
+      typeColors[types[1]][2]
+    })`;
+  } else {
+    return `linear-gradient(135deg, ${typeColors[types[0]][1]}, ${
+      typeColors[types[0]][2]
+    })`;
+  }
+}
