@@ -54,8 +54,8 @@ async function fetchData() {
 function renderPokemon() {
   // Creates new arrray of containing Pokémon types from the data
   let types = data.types.map((item) => item.type.name);
-  
-  const {name, height, weight, base_experience} = data;
+
+  const { name, height, weight, base_experience } = data;
 
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add("pokemon-card");
@@ -91,22 +91,38 @@ function renderPokemon() {
     pokemonType.appendChild(span);
   });
 
-  pokemonCard.insertAdjacentHTML(
-    "beforeend",
-    ` 
-    <div class="card-body">
-        <div class="pokemon-img-container">
-            <img src="${data.sprites.front_default}" alt="${name}" class="pokemon-img">
-        </div>
-        <div class="pokemon-stats">
-            <p><strong>Height:</strong> ${height}</p>
-            <p><strong>Weight:</strong> ${weight}</p>
-        </div>
-    </div>
-    <div class="card-footer">
-        <p class="base-experience">Base Experience: ${base_experience}</p>
-    </div>`
-  );
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+
+  const pokemonImgContainer = document.createElement("div");
+  pokemonImgContainer.classList.add("pokemon-img-container");
+  const pokemonImg = document.createElement("img");
+  pokemonImg.src = data.sprites.front_default;
+  pokemonImg.alt = name;
+  pokemonImg.classList.add("pokemon-img");
+  pokemonImgContainer.appendChild(pokemonImg);
+
+  const pokemonStats = document.createElement("div");
+  pokemonStats.classList.add("pokemon-stats");
+  const heightElement = document.createElement("p");
+  heightElement.innerHTML = `<strong>Height:</strong> ${height}`;
+  const weightElement = document.createElement("p");
+  weightElement.innerHTML = `<strong>Weight:</strong> ${weight}`;
+  pokemonStats.appendChild(heightElement);
+  pokemonStats.appendChild(weightElement);
+
+  cardBody.appendChild(pokemonImgContainer);
+  cardBody.appendChild(pokemonStats);
+
+  const cardFooter = document.createElement("div");
+  cardFooter.classList.add("card-footer");
+  const baseExperience = document.createElement("p");
+  baseExperience.classList.add("base-experience");
+  baseExperience.textContent = `Base Experience: ${base_experience}`;
+
+  cardFooter.appendChild(baseExperience);
+  pokemonCard.appendChild(cardBody);
+  pokemonCard.appendChild(cardFooter);
 }
 
 let evolutionData;
