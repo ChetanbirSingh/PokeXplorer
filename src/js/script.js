@@ -6,7 +6,7 @@ const typeColors = {
   normal: ["#A8A77A", "#D1C5B2", "#E6E1D6"],
   fire: ["#EE8130", "#FF5733", "#F14F30"],
   water: ["#6390F0", "#005C73", "#4C7D9E"],
-  electric: ["#F7D02C", "#FFD700", "#F5A800"],
+  electric: ["#F7D02C", "#FFC107", "#F49F00"], 
   grass: ["#7AC74C", "#65D21E", "#97C938"],
   ice: ["#96D9D6", "#00B0B9", "#74B5C8"],
   fighting: ["#C22E28", "#D33F2E", "#A93129"],
@@ -52,7 +52,7 @@ async function fetchData() {
   pokemonSection.innerHTML = "";
   evolutionSection.innerHTML = "";
   renderPokemon();
-  fetchEvolutionChain();
+  await fetchEvolutionChain();
 }
 
 function renderPokemon() {
@@ -60,7 +60,7 @@ function renderPokemon() {
   // Creates a new array with name of types
   let types = data.types.map((item) => item.type.name);
 
-  const { name, height, weight, base_experience, stats } = data;
+  const { name, height, weight, base_experience, stats, sprites } = data;
 
   const pokemonSectionTitle = document.createElement("h2");
   pokemonSectionTitle.textContent = "Meet Your Pokémon";
@@ -103,18 +103,18 @@ function renderPokemon() {
   const pokemonImgContainer = document.createElement("div");
   pokemonImgContainer.classList.add("pokemon-img-container");
   const pokemonImg = document.createElement("img");
-  pokemonImg.src = data.sprites.front_default;
+  pokemonImg.src = sprites.front_default;
   pokemonImg.alt = name;
   pokemonImg.classList.add("pokemon-img");
   pokemonImgContainer.appendChild(pokemonImg);
 
-  if (data.sprites.back_default !== null) {
+  if (sprites.back_default !== null) {
     pokemonImg.addEventListener("mouseenter", () => {
-      pokemonImg.src = data.sprites.back_default;
+      pokemonImg.src = sprites.back_default;
     });
 
     pokemonImg.addEventListener("mouseleave", () => {
-      pokemonImg.src = data.sprites.front_default;
+      pokemonImg.src = sprites.front_default;
     });
   }
 

@@ -7,6 +7,7 @@
 }
 body {
   min-height: 100vh;
+  width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
     url("/exsm-3936-lec-wi1-winter-2025-assignment-5-ChetanbirSingh/src/img/background.jpg");
   background-repeat: no-repeat;
@@ -119,7 +120,6 @@ h2 {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
-  padding: 5px 20px;
   border-radius: 10px;
 }
 .pokemon-type span {
@@ -156,6 +156,7 @@ h2 {
   font-size: 1rem;
   font-weight: bold;
   margin-top: 5px;
+  line-height: 1.3;
 }
 
 .evolution-tree {
@@ -195,6 +196,7 @@ h2 {
   padding: 20px;
   border-radius: 15px;
   font-size: 1.1rem;
+  line-height: 1.3;
 }
 
 .stats-card p {
@@ -233,8 +235,11 @@ h2 {
     width: 350px;
   }
 
+  .stats-card {
+    width: 350px;
+  }
   .pokemon-name {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 }
 
