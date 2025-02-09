@@ -57,7 +57,7 @@ async function fetchData() {
 
 function renderPokemon() {
   pokemonSection.innerHTML = "";
-
+  // Creates a new array with name of types
   let types = data.types.map((item) => item.type.name);
 
   const { name, height, weight, base_experience, stats } = data;
