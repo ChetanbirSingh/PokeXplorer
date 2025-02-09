@@ -52,7 +52,7 @@ async function fetchData() {
   pokemonSection.innerHTML = "";
   evolutionSection.innerHTML = "";
   renderPokemon();
-  fetchEvolutionChain();
+  await fetchEvolutionChain();
 }
 
 function renderPokemon() {
@@ -60,7 +60,7 @@ function renderPokemon() {
   // Creates a new array with name of types
   let types = data.types.map((item) => item.type.name);
 
-  const { name, height, weight, base_experience, stats } = data;
+  const { name, height, weight, base_experience, stats, sprites } = data;
 
   const pokemonSectionTitle = document.createElement("h2");
   pokemonSectionTitle.textContent = "Meet Your Pokémon";
@@ -103,18 +103,18 @@ function renderPokemon() {
   const pokemonImgContainer = document.createElement("div");
   pokemonImgContainer.classList.add("pokemon-img-container");
   const pokemonImg = document.createElement("img");
-  pokemonImg.src = data.sprites.front_default;
+  pokemonImg.src = sprites.front_default;
   pokemonImg.alt = name;
   pokemonImg.classList.add("pokemon-img");
   pokemonImgContainer.appendChild(pokemonImg);
 
-  if (data.sprites.back_default !== null) {
+  if (sprites.back_default !== null) {
     pokemonImg.addEventListener("mouseenter", () => {
-      pokemonImg.src = data.sprites.back_default;
+      pokemonImg.src = sprites.back_default;
     });
 
     pokemonImg.addEventListener("mouseleave", () => {
-      pokemonImg.src = data.sprites.front_default;
+      pokemonImg.src = sprites.front_default;
     });
   }
 
