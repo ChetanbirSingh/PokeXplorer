@@ -52,7 +52,10 @@ async function fetchData() {
 }
 
 function renderPokemon() {
+  // Creates new arrray of containing Pokémon types from the data
   let types = data.types.map((item) => item.type.name);
+  
+  const {name, height, weight, base_experience} = data;
 
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add("pokemon-card");
@@ -74,7 +77,7 @@ function renderPokemon() {
 
   const pokemonName = document.createElement("div");
   pokemonName.classList.add("pokemon-name");
-  pokemonName.textContent = data.name;
+  pokemonName.textContent = name;
   cardHeader.appendChild(pokemonName);
 
   const pokemonType = document.createElement("div");
@@ -93,15 +96,15 @@ function renderPokemon() {
     ` 
     <div class="card-body">
         <div class="pokemon-img-container">
-            <img src="${data.sprites.front_default}" alt="${data.name}" class="pokemon-img">
+            <img src="${data.sprites.front_default}" alt="${name}" class="pokemon-img">
         </div>
         <div class="pokemon-stats">
-            <p><strong>Height:</strong> ${data.height}</p>
-            <p><strong>Weight:</strong> ${data.weight}</p>
+            <p><strong>Height:</strong> ${height}</p>
+            <p><strong>Weight:</strong> ${weight}</p>
         </div>
     </div>
     <div class="card-footer">
-        <p class="base-experience">Base Experience: ${data.base_experience}</p>
+        <p class="base-experience">Base Experience: ${base_experience}</p>
     </div>`
   );
 }
