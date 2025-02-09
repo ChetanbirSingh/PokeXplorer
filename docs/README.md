@@ -20,8 +20,10 @@ This project was created to practice advanced JavaScript concepts, API integrati
 
 ## Screenshot
 ### Pokémon Info Screen
+![Pokemon info](https://github.com/user-attachments/assets/22bde3bd-b83c-4d0d-bcce-1a866c43d080)
 
 ### Evolution Chain
+![Evolution Chain](https://github.com/user-attachments/assets/e8f11321-8c7d-4279-ba4b-8ca698e67b2f)
 
 ## Table of Contents
 - [Project Description](#project-description)
