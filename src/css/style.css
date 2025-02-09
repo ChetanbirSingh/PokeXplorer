@@ -23,7 +23,7 @@ body {
   padding: 12px 16px;
   border-radius: 25px;
 }
-.flex{
+.flex {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -196,34 +196,33 @@ h2 {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
   color: #fff;
   font-family: "Arial", sans-serif;
-  text-align: left; 
+  text-align: left;
   padding: 20px;
-  border-radius: 15px; 
+  border-radius: 15px;
   font-size: 1.1rem;
 }
 
 .stats-card p {
   font-size: 1.2rem;
-  font-weight: 600; 
+  font-weight: 600;
   color: #ffffff;
   margin-bottom: 15px;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); 
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .stats-card p strong {
-  color: #ffcc00; 
-  font-size: 1.4rem; 
+  color: #ffcc00;
+  font-size: 1.4rem;
   text-transform: uppercase;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   letter-spacing: 2px;
 }
 
 .stats-card p span {
   font-size: 1.2rem;
-  color: #fffae1; 
+  color: #fffae1;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-
 
 @media (min-width: 350px) {
   .heading {
@@ -247,7 +246,7 @@ h2 {
 @media (min-width: 550px) {
   .stats-card {
     width: 85%;
-    } 
+  }
 }
 @media (min-width: 686px) {
   .search-box {
@@ -282,9 +281,9 @@ h2 {
   .evolution-step:last-child::after {
     display: none;
   }
-    .stats-card {
-      width: 60%;
-      } 
+  .stats-card {
+    width: 60%;
+  }
 }
 
 @media (min-width: 1013px) {
@@ -313,15 +312,15 @@ h2 {
   }
 
   .stats-card {
-    position: absolute;  
+    position: absolute;
     left: 70%;
     max-width: 300px;
     margin-top: 0;
-} 
+  }
 }
 @media (min-width: 1111px) {
   .stats-card {
     left: 65%;
     max-width: 400px;
-} 
+  }
 }

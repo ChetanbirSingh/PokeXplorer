@@ -153,7 +153,7 @@ function renderPokemon() {
       typeColors[types[0]][1]
     }, ${typeColors[types[0]][2]})`;
   }
-  
+
   const statsContent = document.createElement("div");
   statsContent.classList.add("stats-content");
 
@@ -188,8 +188,7 @@ async function fetchEvolutionChain() {
   renderEvolutionTree();
 }
 
-function renderEvolutionTree() {  
-
+function renderEvolutionTree() {
   const evolutionContainer = document.createElement("div");
   evolutionContainer.classList.add("evolution-container");
 
