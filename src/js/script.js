@@ -1,6 +1,7 @@
 const searchInput = document.querySelector("#search-input");
 const searchBtn = document.querySelector("#search-pokemon-btn");
 const pokemonSection = document.querySelector("#pokemon-data");
+const evolutionSection = document.querySelector("#evolution-data");
 
 const typeColors = {
   normal: ["#A8A77A", "#D1C5B2", "#E6E1D6"],
@@ -31,24 +32,30 @@ async function fetchData() {
   searchInput.value = "";
 
   if (pokemonIdorName.length === 0) {
-    error("Please enter valid name or id.");
+    error("Please enter a valid name or ID.");
     return;
   }
 
   const response = await fetch(
     `https://pokeapi.co/api/v2/pokemon/${pokemonIdorName}`
   );
-  if (response.status < 200 || response.status >= 300) {
+  if (!response.ok) {
     error("Pokemon does not exist.");
     return;
   }
+
   data = await response.json();
   pokemonSection.innerHTML = "";
+  evolutionSection.innerHTML = "";
   renderPokemon();
+  fetchEvolutionChain();
 }
 
 function renderPokemon() {
+  // Creates new arrray of containing Pokémon types from the data
   let types = data.types.map((item) => item.type.name);
+
+  const { name, height, weight, base_experience } = data;
 
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add("pokemon-card");
@@ -70,7 +77,7 @@ function renderPokemon() {
 
   const pokemonName = document.createElement("div");
   pokemonName.classList.add("pokemon-name");
-  pokemonName.textContent = data.name;
+  pokemonName.textContent = name;
   cardHeader.appendChild(pokemonName);
 
   const pokemonType = document.createElement("div");
@@ -84,36 +91,120 @@ function renderPokemon() {
     pokemonType.appendChild(span);
   });
 
-  pokemonCard.insertAdjacentHTML(
-    "beforeend",
-    `
-        <div class="card-body">
-            <div class="pokemon-img-container">
-                <img src="${data.sprites.front_shiny}" alt="${data.name}" class="pokemon-img">
-            </div>
-            <div class="pokemon-stats">
-                <p><strong>Height:</strong> ${data.height}</p>
-                <p><strong>Weight:</strong> ${data.weight}</p>
-            </div>
-        </div>
-        <div class="card-footer">
-            <p class="base-experience">Base Experience: ${data.base_experience}</p>
-        </div>
-        `
-  );
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+
+  const pokemonImgContainer = document.createElement("div");
+  pokemonImgContainer.classList.add("pokemon-img-container");
+  const pokemonImg = document.createElement("img");
+  pokemonImg.src = data.sprites.front_default;
+  pokemonImg.alt = name;
+  pokemonImg.classList.add("pokemon-img");
+  pokemonImgContainer.appendChild(pokemonImg);
+
+  const pokemonStats = document.createElement("div");
+  pokemonStats.classList.add("pokemon-stats");
+  const heightElement = document.createElement("p");
+  heightElement.innerHTML = `<strong>Height:</strong> ${height}`;
+  const weightElement = document.createElement("p");
+  weightElement.innerHTML = `<strong>Weight:</strong> ${weight}`;
+  pokemonStats.appendChild(heightElement);
+  pokemonStats.appendChild(weightElement);
+
+  cardBody.appendChild(pokemonImgContainer);
+  cardBody.appendChild(pokemonStats);
+
+  const cardFooter = document.createElement("div");
+  cardFooter.classList.add("card-footer");
+  const baseExperience = document.createElement("p");
+  baseExperience.classList.add("base-experience");
+  baseExperience.textContent = `Base Experience: ${base_experience}`;
+
+  cardFooter.appendChild(baseExperience);
+  pokemonCard.appendChild(cardBody);
+  pokemonCard.appendChild(cardFooter);
+}
+
+let evolutionData;
+
+async function fetchEvolutionChain() {
+  const speciesResponse = await fetch(data.species.url);
+  if (!speciesResponse.ok) {
+    return;
+  }
+
+  const speciesData = await speciesResponse.json();
+
+  const evolutionResponse = await fetch(speciesData.evolution_chain.url);
+  if (!evolutionResponse.ok) {
+    return;
+  }
+
+  evolutionData = await evolutionResponse.json();
+  evolutionSection.innerHTML = "";
+  renderEvolutionTree();
+}
+
+function renderEvolutionTree() {
+  const evolutionContainer = document.createElement("div");
+  evolutionContainer.classList.add("evolution-container");
+
+  const evolutionTitle = document.createElement("h2");
+  evolutionTitle.textContent = "Evolution Chain";
+  evolutionContainer.appendChild(evolutionTitle);
+
+  const evolutionTree = document.createElement("div");
+  evolutionTree.classList.add("evolution-tree");
+
+  let currentEvolution = evolutionData.chain;
+
+  while (currentEvolution) {
+    const evoName = currentEvolution.species.name;
+    const pokeID = currentEvolution.species.url.split("/").slice(-2, -1);
+
+    const evoStepContainer = document.createElement("div");
+    evoStepContainer.classList.add("evolution-step");
+
+    const evoImgContainer = document.createElement("div");
+    evoImgContainer.classList.add("evo-img-container");
+
+    const evoImg = document.createElement("img");
+    evoImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeID}.png`;
+    evoImg.alt = evoName;
+    evoImg.classList.add("evo-img");
+    evoImgContainer.appendChild(evoImg);
+
+    const evoNameElement = document.createElement("p");
+    evoNameElement.textContent = evoName;
+
+    evoStepContainer.appendChild(evoImgContainer);
+    evoStepContainer.appendChild(evoNameElement);
+
+    evolutionTree.appendChild(evoStepContainer);
+
+    if (currentEvolution.evolves_to.length > 0) {
+      currentEvolution = currentEvolution.evolves_to[0];
+    } else {
+      currentEvolution = false;
+    }
+  }
+
+  evolutionContainer.appendChild(evolutionTree);
+  evolutionSection.appendChild(evolutionContainer);
 }
 
 searchBtn.addEventListener("click", () => fetchData());
 
 const error = (message) => {
-    pokemonSection.innerHTML = "";
-    const errorDiv = document.createElement("div");
-    errorDiv.classList.add("error-message");
-    errorDiv.textContent = message;
+  pokemonSection.innerHTML = "";
+  evolutionSection.innerHTML = "";
+  const errorDiv = document.createElement("div");
+  errorDiv.classList.add("error-message");
+  errorDiv.textContent = message;
 
-    pokemonSection.appendChild(errorDiv);
+  pokemonSection.appendChild(errorDiv);
 
-    setTimeout(() => {
-        errorDiv.style.display = "none";
-    }, 5000);
+  setTimeout(() => {
+    errorDiv.remove();
+  }, 5000);
 };
