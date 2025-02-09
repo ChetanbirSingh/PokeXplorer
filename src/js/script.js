@@ -102,6 +102,16 @@ function renderPokemon() {
   pokemonImg.classList.add("pokemon-img");
   pokemonImgContainer.appendChild(pokemonImg);
 
+  if (data.sprites.back_default !== null) {
+    pokemonImg.addEventListener("mouseenter", () => {
+      pokemonImg.src = data.sprites.back_default;
+    });
+
+    pokemonImg.addEventListener("mouseleave", () => {
+      pokemonImg.src = data.sprites.front_default;
+    });
+  }
+
   const pokemonStats = document.createElement("div");
   pokemonStats.classList.add("pokemon-stats");
   const heightElement = document.createElement("p");
