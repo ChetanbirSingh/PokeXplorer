@@ -29,11 +29,6 @@ body {
   margin-top: 20px;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-}
-
 .heading {
   margin-top: 10px;
   font-size: 1.5rem;
