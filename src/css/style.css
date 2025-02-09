@@ -3,27 +3,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
 }
-
 body {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
-    url("/exsm-3936-lec-wi1-winter-2025-assignment-5-ChetanbirSingh/src/img/background.jpg"); /* Updated path */
+    url("/exsm-3936-lec-wi1-winter-2025-assignment-5-ChetanbirSingh/src/img/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 .error-message {
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    background: rgb(255, 31, 31);
-    padding: 12px 16px;
-    border-radius: 25px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  background: rgb(255, 31, 31);
+  padding: 12px 16px;
+  border-radius: 25px;
 }
-
-
 
 .center {
   display: flex;
@@ -32,9 +30,17 @@ body {
 
 .heading {
   margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+h2 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.heading,
+h2 {
   text-align: center;
-  font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
-  font-size: 1.8rem;
   color: #ffcc00;
   text-shadow: 3px 3px 0 #000, 6px 6px 5px rgba(0, 0, 0, 0.5);
 }
@@ -84,7 +90,7 @@ body {
   margin-top: 15px;
 }
 .pokemon-card {
-  width: 350px;
+  width: 100%;
   border: 4px solid #c0c0c0;
   margin-bottom: 20px;
   border-radius: 15px;
@@ -92,12 +98,6 @@ body {
   color: #fff;
   font-family: "Arial", sans-serif;
   text-align: center;
-  transform: scale(1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.pokemon-card:hover {
-  transform: scale(1.05);
 }
 
 .card-header {
@@ -107,7 +107,7 @@ body {
 }
 
 .pokemon-name {
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
   font-family: "Press Start 2P", sans-serif;
 }
@@ -150,16 +150,61 @@ body {
 }
 
 .base-experience {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-top: 5px;
 }
 
-@media (min-width: 600px) {
+#evolution-data {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.evolution-tree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.evolution-step img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+}
+
+.evolution-step p {
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+}
+
+@media (min-width: 350px) {
   .heading {
+    margin-top: 10px;
     font-size: 2rem;
   }
 
+  h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  .pokemon-card {
+    width: 350px;
+  }
+
+  .pokemon-name {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 686px) {
   .search-box {
     width: 80%;
     max-width: 400px;
@@ -174,11 +219,34 @@ body {
     font-size: 1.2rem;
     padding: 0.6rem 1.2rem;
   }
+
+  .evolution-step {
+    position: relative;
+  }
+
+  .evolution-step::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background-color: #ffcc00;
+    top: 50%;
+    left: 100%;
+  }
+
+  .evolution-step:last-child::after {
+    display: none;
+  }
 }
 
 @media (min-width: 1024px) {
   .heading {
     font-size: 2.5rem;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
   }
 
   .search-box {
