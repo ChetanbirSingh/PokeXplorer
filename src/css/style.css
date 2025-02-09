@@ -235,6 +235,9 @@ h2 {
     width: 350px;
   }
 
+  .stats-card {
+    width: 350px;
+  }
   .pokemon-name {
     font-size: 1.7rem;
   }
