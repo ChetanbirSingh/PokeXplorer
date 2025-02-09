@@ -6,7 +6,7 @@ const typeColors = {
   normal: ["#A8A77A", "#D1C5B2", "#E6E1D6"],
   fire: ["#EE8130", "#FF5733", "#F14F30"],
   water: ["#6390F0", "#005C73", "#4C7D9E"],
-  electric: ["#F7D02C", "#FFD700", "#F5A800"],
+  electric: ["#F7D02C", "#FFC107", "#F49F00"], 
   grass: ["#7AC74C", "#65D21E", "#97C938"],
   ice: ["#96D9D6", "#00B0B9", "#74B5C8"],
   fighting: ["#C22E28", "#D33F2E", "#A93129"],
