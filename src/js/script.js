@@ -1,7 +1,6 @@
 const searchInput = document.querySelector("#search-input");
 const searchBtn = document.querySelector("#search-pokemon-btn");
-const pokemonSection = document.querySelector("#pokemon-data");
-const evolutionSection = document.querySelector("#evolution-data");
+const mainElement = document.querySelector("main");
 
 const typeColors = {
   normal: ["#A8A77A", "#D1C5B2", "#E6E1D6"],
@@ -27,6 +26,11 @@ const typeColors = {
 };
 
 let data;
+const pokemonSection = document.createElement("section");
+const evolutionSection = document.createElement("section");
+mainElement.appendChild(pokemonSection);
+mainElement.appendChild(evolutionSection);
+
 async function fetchData() {
   const pokemonIdorName = searchInput.value.toLowerCase().trim();
   searchInput.value = "";
@@ -52,10 +56,18 @@ async function fetchData() {
 }
 
 function renderPokemon() {
-  // Creates new arrray of containing Pokémon types from the data
+  // Creates new array containing Pokémon types from the data
   let types = data.types.map((item) => item.type.name);
 
-  const { name, height, weight, base_experience } = data;
+  const { name, height, weight, base_experience} = data;
+
+  const pokemonSectionTitle = document.createElement("h2");
+  pokemonSectionTitle.textContent = "Meet Your Pokemon";
+  pokemonSection.appendChild(pokemonSectionTitle);
+
+  const pokemonContainer = document.createElement("div");
+  pokemonContainer.classList.add("pokemon-container");
+  pokemonSection.appendChild(pokemonContainer);
 
   const pokemonCard = document.createElement("div");
   pokemonCard.classList.add("pokemon-card");
@@ -69,7 +81,7 @@ function renderPokemon() {
       typeColors[types[0]][1]
     }, ${typeColors[types[0]][2]})`;
   }
-  pokemonSection.appendChild(pokemonCard);
+  pokemonContainer.appendChild(pokemonCard);
 
   const cardHeader = document.createElement("div");
   cardHeader.classList.add("card-header");
@@ -155,13 +167,14 @@ async function fetchEvolutionChain() {
   renderEvolutionTree();
 }
 
-function renderEvolutionTree() {
+function renderEvolutionTree() {  
+
   const evolutionContainer = document.createElement("div");
   evolutionContainer.classList.add("evolution-container");
 
   const evolutionTitle = document.createElement("h2");
   evolutionTitle.textContent = "Evolution Chain";
-  evolutionContainer.appendChild(evolutionTitle);
+  evolutionSection.appendChild(evolutionTitle);
 
   const evolutionTree = document.createElement("div");
   evolutionTree.classList.add("evolution-tree");
@@ -209,8 +222,12 @@ const error = (message) => {
   pokemonSection.innerHTML = "";
   evolutionSection.innerHTML = "";
   const errorDiv = document.createElement("div");
-  errorDiv.classList.add("error-message");
-  errorDiv.textContent = message;
+  errorDiv.classList.add("flex");
+
+  const errorMessage = document.createElement("p");
+  errorMessage.classList.add("error-message");
+  errorMessage.textContent = message;
+  errorDiv.appendChild(errorMessage);
 
   pokemonSection.appendChild(errorDiv);
 
