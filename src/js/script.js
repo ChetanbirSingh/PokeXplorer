@@ -56,13 +56,14 @@ async function fetchData() {
 }
 
 function renderPokemon() {
-  // Creates new array containing Pokémon types from the data
+  pokemonSection.innerHTML = "";
+
   let types = data.types.map((item) => item.type.name);
 
-  const { name, height, weight, base_experience} = data;
+  const { name, height, weight, base_experience, stats } = data;
 
   const pokemonSectionTitle = document.createElement("h2");
-  pokemonSectionTitle.textContent = "Meet Your Pokemon";
+  pokemonSectionTitle.textContent = "Meet Your Pokémon";
   pokemonSection.appendChild(pokemonSectionTitle);
 
   const pokemonContainer = document.createElement("div");
@@ -126,30 +127,50 @@ function renderPokemon() {
 
   const pokemonStats = document.createElement("div");
   pokemonStats.classList.add("pokemon-stats");
-  const heightElement = document.createElement("p");
-  heightElement.innerHTML = `<strong>Height:</strong> ${height}`;
-  const weightElement = document.createElement("p");
-  weightElement.innerHTML = `<strong>Weight:</strong> ${weight}`;
-  pokemonStats.appendChild(heightElement);
-  pokemonStats.appendChild(weightElement);
+  pokemonStats.innerHTML = `
+    <p><strong>Height:</strong> ${height}</p>
+    <p><strong>Weight:</strong> ${weight}</p>
+  `;
 
   cardBody.appendChild(pokemonImgContainer);
   cardBody.appendChild(pokemonStats);
+  pokemonCard.appendChild(cardBody);
 
   const cardFooter = document.createElement("div");
   cardFooter.classList.add("card-footer");
-  const baseExperience = document.createElement("p");
-  baseExperience.classList.add("base-experience");
-  baseExperience.textContent = `Base Experience: ${base_experience}`;
-
-  cardFooter.appendChild(baseExperience);
-  pokemonCard.appendChild(cardBody);
+  cardFooter.innerHTML = `<p class="base-experience"><strong>Base Experience:</strong> ${base_experience}</p>`;
   pokemonCard.appendChild(cardFooter);
+
+  const statsCard = document.createElement("div");
+  statsCard.classList.add("stats-card");
+
+  if (types.length > 1) {
+    statsCard.style.background = `linear-gradient(135deg, ${
+      typeColors[types[0]][1]
+    }, ${typeColors[types[1]][2]})`;
+  } else {
+    statsCard.style.background = `linear-gradient(135deg, ${
+      typeColors[types[0]][1]
+    }, ${typeColors[types[0]][2]})`;
+  }
+  
+  const statsContent = document.createElement("div");
+  statsContent.classList.add("stats-content");
+
+  stats.forEach((stat) => {
+    const statElement = document.createElement("p");
+    statElement.innerHTML = `<strong>${stat.stat.name}:</strong> ${stat.base_stat}`;
+    statsContent.appendChild(statElement);
+  });
+
+  statsCard.appendChild(statsContent);
+  pokemonContainer.appendChild(statsCard);
 }
 
 let evolutionData;
 
 async function fetchEvolutionChain() {
+  evolutionSection.innerHTML = "";
   const speciesResponse = await fetch(data.species.url);
   if (!speciesResponse.ok) {
     return;
