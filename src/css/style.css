@@ -70,7 +70,7 @@ h2 {
   background-color: rgba(255, 255, 255, 0.2);
   border: 2px solid #ffcc00;
   border-radius: 25px;
-  font-size: 14px;
+  font-size: 10px;
   padding: 10px 12px;
   outline: none;
   color: #ffffff;
@@ -245,7 +245,9 @@ h2 {
     margin-bottom: 15px;
     font-size: 1.5rem;
   }
-
+  .search-form input[type="text"] {
+    font-size: 0.9rem;
+  }
   .pokemon-card {
     width: 320px;
   }
@@ -253,7 +255,6 @@ h2 {
   .stats-card {
     width: 320px;
   }
-
   .pokemon-name {
     font-size: 1.5rem;
   }
