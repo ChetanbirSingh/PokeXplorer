@@ -230,12 +230,6 @@ h2 {
   letter-spacing: 2px;
 }
 
-.stats-card p span {
-  font-size: 1.2rem;
-  color: #fffae1;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
 @media (min-width: 350px) {
   .heading {
     margin-top: 10px;
