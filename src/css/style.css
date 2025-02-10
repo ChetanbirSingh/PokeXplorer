@@ -114,7 +114,6 @@ h2 {
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   color: #fff;
-  font-family: "Arial", sans-serif;
   text-align: center;
 }
 
@@ -127,10 +126,14 @@ h2 {
 .pokemon-name {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  font-family: "Press Start 2P", sans-serif;
 }
 
 .pokemon-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -138,7 +141,6 @@ h2 {
 }
 
 .pokemon-type span {
-  margin-right: 10px;
   padding: 5px;
   border-radius: 5px;
 }
@@ -206,7 +208,6 @@ h2 {
   border: 4px solid #c0c0c0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
   color: #fff;
-  font-family: "Arial", sans-serif;
   text-align: left;
   padding: 20px;
   border-radius: 15px;
@@ -229,12 +230,6 @@ h2 {
   letter-spacing: 2px;
 }
 
-.stats-card p span {
-  font-size: 1.2rem;
-  color: #fffae1;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
 @media (min-width: 350px) {
   .heading {
     margin-top: 10px;
@@ -251,7 +246,9 @@ h2 {
   .pokemon-card {
     width: 320px;
   }
-
+  .pokemon-type {
+    flex-wrap: nowrap;
+  }
   .stats-card {
     width: 320px;
   }
