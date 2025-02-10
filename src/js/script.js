@@ -38,7 +38,7 @@ searchForm.addEventListener("submit", async (event) => {
   searchInput.value = "";
 
   if (pokemonIdorName.length === 0) {
-    error("Please enter a valid name or ID.");
+    error("OOPS! You forgot to enter a Pokémon name or ID.");
     return;
   }
 
@@ -46,7 +46,7 @@ searchForm.addEventListener("submit", async (event) => {
     `https://pokeapi.co/api/v2/pokemon/${pokemonIdorName}`
   );
   if (!response.ok) {
-    error("Pokemon does not exist.");
+    error("Oops! That Pokémon doesn't exist. Try another name or ID.");
     return;
   }
 
