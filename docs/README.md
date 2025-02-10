@@ -20,10 +20,11 @@ This project was created to practice advanced JavaScript concepts, API integrati
 
 ## Screenshot
 ### Pokémon Info Screen
-![Pokemon info](https://github.com/user-attachments/assets/22bde3bd-b83c-4d0d-bcce-1a866c43d080)
+![Squirtle info](https://github.com/user-attachments/assets/22bde3bd-b83c-4d0d-bcce-1a866c43d080)
+![latias info](https://github.com/user-attachments/assets/c53feeb8-c5e2-4a40-9a8f-06b16474fee2)
 
 ### Evolution Chain
-![Evolution Chain](https://github.com/user-attachments/assets/e8f11321-8c7d-4279-ba4b-8ca698e67b2f)
+![Squirtle Evolution Chain](https://github.com/user-attachments/assets/e8f11321-8c7d-4279-ba4b-8ca698e67b2f)
 
 ## Table of Contents
 - [Project Description](#project-description)
