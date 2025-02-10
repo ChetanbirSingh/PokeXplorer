@@ -1,12 +1,12 @@
 const searchInput = document.querySelector("#search-input");
-const searchBtn = document.querySelector("#search-pokemon-btn");
+const searchForm = document.querySelector("#pokemon-search-form");
 const mainElement = document.querySelector("main");
 
 const typeColors = {
   normal: ["#A8A77A", "#D1C5B2", "#E6E1D6"],
   fire: ["#EE8130", "#FF5733", "#F14F30"],
   water: ["#6390F0", "#005C73", "#4C7D9E"],
-  electric: ["#F7D02C", "#FFC107", "#F49F00"], 
+  electric: ["#F7D02C", "#FFC107", "#F49F00"],
   grass: ["#7AC74C", "#65D21E", "#97C938"],
   ice: ["#96D9D6", "#00B0B9", "#74B5C8"],
   fighting: ["#C22E28", "#D33F2E", "#A93129"],
@@ -31,7 +31,9 @@ const evolutionSection = document.createElement("section");
 mainElement.appendChild(pokemonSection);
 mainElement.appendChild(evolutionSection);
 
-async function fetchData() {
+searchForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
   const pokemonIdorName = searchInput.value.toLowerCase().trim();
   searchInput.value = "";
 
@@ -53,7 +55,7 @@ async function fetchData() {
   evolutionSection.innerHTML = "";
   renderPokemon();
   await fetchEvolutionChain();
-}
+});
 
 function renderPokemon() {
   pokemonSection.innerHTML = "";
@@ -218,8 +220,6 @@ function renderEvolutionTree() {
   evolutionContainer.appendChild(evolutionTree);
   evolutionSection.appendChild(evolutionContainer);
 }
-
-searchBtn.addEventListener("click", () => fetchData());
 
 const error = (message) => {
   pokemonSection.innerHTML = "";
