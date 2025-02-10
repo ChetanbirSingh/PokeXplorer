@@ -12,13 +12,15 @@
         <div class="search-box">
           <h1 class="heading">SEARCH A POKÉMON</h1>
 
-          <input
-            id="search-input"
-            type="text"
-            placeholder="Enter name or Id..."
-          />
-
-          <button id="search-pokemon-btn">Search</button>
+          <form id="pokemon-search-form" class="search-form" action="#">
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Enter name or Id..."
+              required
+            />
+            <input type="submit" id="search-pokemon-btn" value="submit" />
+          </form>
         </div>
       </div>
     </header>
