@@ -45,7 +45,6 @@ This project was created to practice advanced JavaScript concepts, API integrati
 - **JavaScript**
 
 ## Future Implementations/Improvements
-- Implement **local storage** to save the last searched Pokémon and restore it on page reload.
 - Add more **customization options**, such as displaying multiple Pokémon at once or including additional Pokémon-related data.
 
 ## Known Bugs
