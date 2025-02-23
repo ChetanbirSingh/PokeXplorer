@@ -57,3 +57,4 @@ This project was created to practice advanced JavaScript concepts, API integrati
 
 ## Credits and Acknowledgments
 - This app uses [PokéAPI](https://pokeapi.co/) to fetch Pokémon data.
+- Background generated using [DeepAI](https://deepai.org/).
