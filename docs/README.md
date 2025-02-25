@@ -20,12 +20,17 @@ The Pokémon Search application includes the following core functionality:
 This project was created to practice advanced JavaScript concepts, API integration, and DOM manipulation. The goal was to build an interactive Pokémon search app that showcases real-time data retrieval and user interaction features.
 
 ## Screenshot
+
 ### Pokémon Info Screen
-![Squirtle info](https://github.com/user-attachments/assets/22bde3bd-b83c-4d0d-bcce-1a866c43d080)
+![Golisopod infp](https://github.com/user-attachments/assets/ed35ed86-9af6-431e-ad15-36e7e92da478)
 
 ![latias info](https://github.com/user-attachments/assets/e4e8844a-96a9-45b7-bec6-7d126c0378df)
 
+![Squirtle info](https://github.com/user-attachments/assets/22bde3bd-b83c-4d0d-bcce-1a866c43d080)
+
 ### Evolution Chain
+![Golisopod Evolution Chain](https://github.com/user-attachments/assets/82eba0fe-b9ac-4afe-97c1-a00169930ab9)
+
 ![Squirtle Evolution Chain](https://github.com/user-attachments/assets/e8f11321-8c7d-4279-ba4b-8ca698e67b2f)
 
 ![Magikarp Evolution Chain](https://github.com/user-attachments/assets/566074d4-b245-48f8-a9e5-dfb96f78e406)
