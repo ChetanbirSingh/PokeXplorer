@@ -25,7 +25,7 @@ This project was created to practice advanced JavaScript concepts, API integrati
 
 ![Braixan info](https://i.imgur.com/azWLXPu.png)
 
-![Crawdaunt info](https://i.imgur.com/7YgA59O.png)
+![Crawdaunt info](https://i.imgur.com/UXdywS2.png)
 
 ### Evolution Chain
 ![Onix Evolution Chain](https://i.imgur.com/j5yoNMV.png)
