@@ -1,5 +1,4 @@
-# Pokémon Search Application
-Live app hosted on [PokéExplorer](https://pokexplorer.vercel.app)
+# [PokéExplorer](https://pokexplorer.vercel.app)
 
 ## Project Description
 This project simulates a Pokémon search application where users can search for Pokémon by name or ID and view detailed information such as types, stats, height, weight, base experience, and evolution chains. The app fetches data from the PokéAPI and dynamically displays the information with interactive features like type-based background gradients and a hover effect on the Pokémon images.
