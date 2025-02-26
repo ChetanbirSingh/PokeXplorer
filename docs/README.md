@@ -21,18 +21,18 @@ This project was created to practice advanced JavaScript concepts, API integrati
 ## Screenshot
 
 ### Pokémon Info Screen
-![Golisopod infp](https://github.com/user-attachments/assets/ed35ed86-9af6-431e-ad15-36e7e92da478)
+![Onix infp](https://i.imgur.com/8GI68ED.png)
 
-![latias info](https://github.com/user-attachments/assets/e4e8844a-96a9-45b7-bec6-7d126c0378df)
+![Braixan info](https://i.imgur.com/azWLXPu.png)
 
-![Squirtle info](https://github.com/user-attachments/assets/22bde3bd-b83c-4d0d-bcce-1a866c43d080)
+![Crawdaunt info](https://i.imgur.com/7YgA59O.png)
 
 ### Evolution Chain
-![Golisopod Evolution Chain](https://github.com/user-attachments/assets/82eba0fe-b9ac-4afe-97c1-a00169930ab9)
+![Onix Evolution Chain](https://i.imgur.com/j5yoNMV.png)
 
-![Squirtle Evolution Chain](https://github.com/user-attachments/assets/e8f11321-8c7d-4279-ba4b-8ca698e67b2f)
+![Braixan Evolution Chain](https://i.imgur.com/5eZ8E84.png)
 
-![Magikarp Evolution Chain](https://github.com/user-attachments/assets/566074d4-b245-48f8-a9e5-dfb96f78e406)
+![Crawdaunt Evolution Chain](https://i.imgur.com/H3iRbp1.png)
 
 ## Table of Contents
 - [Project Description](#project-description)
