@@ -10,7 +10,6 @@ The Pokémon Search application includes the following core functionality:
 - **Display Pokémon Information**:
   - Name, type(s), height, weight, and base experience.
   - Stats such as HP, Attack, Defense, and others.
-  - Front and back images of the Pokémon.
 - **Evolution Chain**: Users can see the evolution chain of the searched Pokémon, with images and names of evolved forms.
 - **Background Gradient**: The background color of the Pokémon card is dynamically generated based on the Pokémon's types.
 - **Audio Effects**: Audio is played when a Pokémon image is clicked, with sound effects corresponding to the selected Pokémon.
@@ -51,7 +50,7 @@ This project was created to practice advanced JavaScript concepts, API integrati
 - **JavaScript**
 
 ## Future Implementations/Improvements
-- Add more **customization options**, such as displaying multiple Pokémon at once or including additional Pokémon-related data.
+- Currently no planned improvements, but potential features may be added in the future.
 
 ## Known Bugs
 - No known bugs at the moment.
