@@ -159,8 +159,6 @@ function renderPokemon() {
   pokemonContainer.appendChild(statsCard);
 }
 
-let evolutionData;
-
 async function fetchEvolutionChain() {
   try {
     const speciesResponse = await fetch(data.species.url);
@@ -179,14 +177,14 @@ async function fetchEvolutionChain() {
       );
     }
 
-    evolutionData = await evolutionResponse.json();
-    renderEvolutionTree();
+    const evolutionData = await evolutionResponse.json();
+    renderEvolutionTree(evolutionData);
   } catch (error) {
     errorMessage(error.message);
   }
 }
 
-function renderEvolutionTree() {
+function renderEvolutionTree(evolutionData) {
   const evolutionContainer = document.createElement("div");
   evolutionContainer.classList.add("evolution-container");
 
