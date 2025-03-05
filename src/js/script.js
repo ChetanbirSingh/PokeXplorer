@@ -25,7 +25,6 @@ const typeColors = {
   shadow: ["#6A6A6A", "#505050", "#383838"],
 };
 
-let data;
 const pokemonSection = document.createElement("section");
 const evolutionSection = document.createElement("section");
 mainElement.appendChild(pokemonSection);
@@ -45,24 +44,24 @@ searchForm.addEventListener("submit", async (event) => {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonIdorName}`
     );
-    
+
     if (!response.ok) {
       throw new Error(
         "Oops! That Pokémon doesn't exist. Try another name or ID."
       );
     }
 
-    data = await response.json();
+    const data = await response.json();
     pokemonSection.innerHTML = "";
     evolutionSection.innerHTML = "";
-    renderPokemon();
-    await fetchEvolutionChain();
+    renderPokemon(data);
+    await fetchEvolutionChain(data);
   } catch (error) {
     errorMessage(error.message);
   }
 });
 
-function renderPokemon() {
+function renderPokemon(data) {
   pokemonSection.innerHTML = "";
   // Creates a new array with name of types
   let types = data.types.map((item) => item.type.name);
@@ -159,7 +158,7 @@ function renderPokemon() {
   pokemonContainer.appendChild(statsCard);
 }
 
-async function fetchEvolutionChain() {
+async function fetchEvolutionChain(data) {
   try {
     const speciesResponse = await fetch(data.species.url);
     if (!speciesResponse.ok) {
