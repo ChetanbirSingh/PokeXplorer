@@ -37,24 +37,29 @@ searchForm.addEventListener("submit", async (event) => {
   const pokemonIdorName = searchInput.value.toLowerCase().trim();
   searchInput.value = "";
 
-  if (pokemonIdorName.length === 0) {
-    error("OOPS! You forgot to enter a Pokémon name or ID.");
-    return;
-  }
+  try {
+    if (pokemonIdorName.length === 0) {
+      throw new Error("OOPS! You forgot to enter a Pokémon name or ID.");
+    }
 
-  const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/${pokemonIdorName}`
-  );
-  if (!response.ok) {
-    error("Oops! That Pokémon doesn't exist. Try another name or ID.");
-    return;
-  }
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokemonIdorName}`
+    );
+    
+    if (!response.ok) {
+      throw new Error(
+        "Oops! That Pokémon doesn't exist. Try another name or ID."
+      );
+    }
 
-  data = await response.json();
-  pokemonSection.innerHTML = "";
-  evolutionSection.innerHTML = "";
-  renderPokemon();
-  await fetchEvolutionChain();
+    data = await response.json();
+    pokemonSection.innerHTML = "";
+    evolutionSection.innerHTML = "";
+    renderPokemon();
+    await fetchEvolutionChain();
+  } catch (error) {
+    errorMessage(error.message);
+  }
 });
 
 function renderPokemon() {
@@ -157,20 +162,28 @@ function renderPokemon() {
 let evolutionData;
 
 async function fetchEvolutionChain() {
-  const speciesResponse = await fetch(data.species.url);
-  if (!speciesResponse.ok) {
-    return;
+  try {
+    const speciesResponse = await fetch(data.species.url);
+    if (!speciesResponse.ok) {
+      throw new Error(
+        "Unable to retrieve Pokémon evolution data. Please try again later."
+      );
+    }
+
+    const speciesData = await speciesResponse.json();
+
+    const evolutionResponse = await fetch(speciesData.evolution_chain.url);
+    if (!evolutionResponse.ok) {
+      throw new Error(
+        "Unable to fetch the Pokémon evolution chain. Please try again later."
+      );
+    }
+
+    evolutionData = await evolutionResponse.json();
+    renderEvolutionTree();
+  } catch (error) {
+    errorMessage(error.message);
   }
-
-  const speciesData = await speciesResponse.json();
-
-  const evolutionResponse = await fetch(speciesData.evolution_chain.url);
-  if (!evolutionResponse.ok) {
-    return;
-  }
-
-  evolutionData = await evolutionResponse.json();
-  renderEvolutionTree();
 }
 
 function renderEvolutionTree() {
@@ -221,18 +234,20 @@ function renderEvolutionTree() {
   evolutionSection.appendChild(evolutionContainer);
 }
 
-const error = (message) => {
-  pokemonSection.innerHTML = "";
-  evolutionSection.innerHTML = "";
+const errorMessage = (message) => {
   const errorDiv = document.createElement("div");
   errorDiv.classList.add("flex");
 
+  const existingErrorDiv = document.querySelector(".error-message");
+  if (existingErrorDiv) {
+    existingErrorDiv.remove();
+  }
   const errorMessage = document.createElement("p");
   errorMessage.classList.add("error-message");
   errorMessage.textContent = message;
   errorDiv.appendChild(errorMessage);
 
-  pokemonSection.appendChild(errorDiv);
+  pokemonSection.prepend(errorDiv);
 
   setTimeout(() => {
     errorDiv.remove();
@@ -244,9 +259,8 @@ function getBackgroundGradient(types) {
     return `linear-gradient(135deg, ${typeColors[types[0]][1]}, ${
       typeColors[types[1]][2]
     })`;
-  } else {
-    return `linear-gradient(135deg, ${typeColors[types[0]][1]}, ${
-      typeColors[types[0]][2]
-    })`;
   }
+  return `linear-gradient(135deg, ${typeColors[types[0]][1]}, ${
+    typeColors[types[0]][2]
+  })`;
 }
