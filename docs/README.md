@@ -1,7 +1,7 @@
 # [PokéExplorer](https://pokexplorer.vercel.app)
 
 ## Project Description
-This project simulates a Pokémon search application where users can search for Pokémon by name or ID and view detailed information such as types, stats, height, weight, base experience, and evolution chains. The app fetches data from the PokéAPI and dynamically displays the information with interactive features like type-based background gradients and a hover effect on the Pokémon images.
+This project simulates a Pokémon search application where users can search for Pokémon by name or ID and view detailed information such as types, stats, height, weight, base experience, and evolution chains. The app fetches data from the PokéAPI and dynamically displays the information with interactive features like type-based background gradients and audio effects that play when a Pokémon image is clicked.
 
 ## Scope and Functionality
 The Pokémon Search application includes the following core functionality:
@@ -10,9 +10,10 @@ The Pokémon Search application includes the following core functionality:
 - **Display Pokémon Information**:
   - Name, type(s), height, weight, and base experience.
   - Stats such as HP, Attack, Defense, and others.
-  - Front and back images of the Pokémon with hover functionality.
+  - Front and back images of the Pokémon.
 - **Evolution Chain**: Users can see the evolution chain of the searched Pokémon, with images and names of evolved forms.
 - **Background Gradient**: The background color of the Pokémon card is dynamically generated based on the Pokémon's types.
+- **Audio Effects**: Audio is played when a Pokémon image is clicked, with sound effects corresponding to the selected Pokémon.
 - **Error Handling**: If the Pokémon does not exist or the input is invalid, an error message is shown.
 
 ## Motivation
@@ -21,7 +22,7 @@ This project was created to practice advanced JavaScript concepts, API integrati
 ## Screenshot
 
 ### Pokémon Info Screen
-![Onix infp](https://i.imgur.com/8GI68ED.png)
+![Onix info](https://i.imgur.com/8GI68ED.png)
 
 ![Braixan info](https://i.imgur.com/azWLXPu.png)
 

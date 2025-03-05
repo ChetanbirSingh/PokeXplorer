@@ -13,7 +13,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed
+  background-attachment: fixed;
 }
 
 .error-message {
@@ -153,6 +153,29 @@ h2 {
 .pokemon-img {
   width: 200px;
   height: 200px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pokemon-img:hover {
+  transform: scale(1.05);
+}
+
+.playing-cry {
+  filter: brightness(1.2);
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
 
 .pokemon-stats {

@@ -50,7 +50,6 @@ searchForm.addEventListener("submit", async (event) => {
         "Oops! That Pokémon doesn't exist. Try another name or ID."
       );
     }
-
     const data = await response.json();
     pokemonSection.innerHTML = "";
     evolutionSection.innerHTML = "";
@@ -66,7 +65,7 @@ function renderPokemon(data) {
   // Creates a new array with name of types
   let types = data.types.map((item) => item.type.name);
 
-  const { name, height, weight, base_experience, stats, sprites } = data;
+  const { name, height, weight, base_experience, stats, sprites, cries } = data;
 
   const pokemonSectionTitle = document.createElement("h2");
   pokemonSectionTitle.textContent = "Meet Your Pokémon";
@@ -114,15 +113,16 @@ function renderPokemon(data) {
   pokemonImg.classList.add("pokemon-img");
   pokemonImgContainer.appendChild(pokemonImg);
 
-  if (sprites.back_default !== null) {
-    pokemonImg.addEventListener("mouseenter", () => {
-      pokemonImg.src = sprites.back_default;
-    });
-
-    pokemonImg.addEventListener("mouseleave", () => {
-      pokemonImg.src = sprites.front_default;
-    });
-  }
+  pokemonImg.addEventListener("click", () => {
+    if (cries) {
+      pokemonImg.classList.add("playing-cry");
+      const audioUrl = cries.legacy;
+      const audio = new Audio(audioUrl);
+      audio.volume = 0.4;
+      audio.play();
+    }
+    setTimeout(() => pokemonImg.classList.remove("playing-cry"), 500);
+  });
 
   const pokemonStats = document.createElement("div");
   pokemonStats.classList.add("pokemon-stats");
